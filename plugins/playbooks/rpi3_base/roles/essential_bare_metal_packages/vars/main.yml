@@ -3,9 +3,10 @@ bare_metal_packages: [dosfstools, initramfs-tools, udev]
 
 bare_metal_backports_packages: [linux-image-arm64]
 
-bare_metal_buster_packages: [raspi3-firmware]
+# bare_metal_buster_packages: [raspi3-firmware]
 
-default_release_file: /etc/apt/apt.conf.d/08default-release
+# default_release_file: /etc/apt/apt.conf.d/08default-release
 
-buster_list: /etc/apt/sources.list.d/buster.list
+# buster_list: /etc/apt/sources.list.d/buster.list
 
+raspi3_firmware_package: raspi3-firmware_1.20171201-2_arm64.deb

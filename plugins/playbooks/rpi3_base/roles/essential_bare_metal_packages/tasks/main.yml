@@ -17,27 +17,33 @@
   apt: name={{ item }} state=present install_recommends=no default_release=stretch-backports
   with_items: "{{ bare_metal_backports_packages }}"
 
-- name: Set stretch as default release.
-  copy: src=08default-release dest={{ default_release_file }}
+#- name: Set stretch as default release.
+#  copy: src=08default-release dest={{ default_release_file }}
 
-- name: Add buster repository for latest firmware.
-  copy: src=buster.list dest={{ buster_list }}
+#- name: Add buster repository for latest firmware.
+#  copy: src=buster.list dest={{ buster_list }}
 
-- name: Update apt cache.
-  apt: update_cache=yes
+#- name: Update apt cache.
+#  apt: update_cache=yes
 
-- name: Install buster packages that are essential for running on bare metal.
-  apt: name={{ item }} state=present install_recommends=no default_release=buster
-  with_items: "{{ bare_metal_buster_packages }}"
+#- name: Install buster packages that are essential for running on bare metal.
+#  apt: name={{ item }} state=present install_recommends=no default_release=buster
+#  with_items: "{{ bare_metal_buster_packages }}"
 
-- name: Remove buster repository.
-  file: dest={{ buster_list }} state=absent
+#- name: Remove buster repository.
+#  file: dest={{ buster_list }} state=absent
 
-- name: Remove stretch default release setting.
-  file: dest={{ default_release_file }} state=absent
+#- name: Remove stretch default release setting.
+#  file: dest={{ default_release_file }} state=absent
 
-- name: Update apt cache.
-  apt: update_cache=yes
+- name: Copy custom raspi3-firmware package.
+  copy: src={{ raspi3_firmware_package }} dest=/tmp/
+
+- name: Install custom raspi3-firmware package.
+  apt: deb=/tmp/{{ raspi3_firmware_package }}
+
+#- name: Update apt cache.
+#  apt: update_cache=yes
 
 # Remark: With Ansible >= 2.4 the unmounting can be done using the mount module.
 - name: Unmount /boot/firmware.
