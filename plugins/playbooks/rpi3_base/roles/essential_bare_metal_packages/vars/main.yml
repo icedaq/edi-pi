@@ -9,4 +9,4 @@ bare_metal_backports_packages: ["{{ kernel_image }}"]
 
 # buster_list: /etc/apt/sources.list.d/buster.list
 
-raspi3_firmware_package: raspi3-firmware_1.20171201-2_{{ edi_bootstrap_architecture }}.deb
+raspi3_firmware_package: raspi3-firmware_1.20171201-3_{{ edi_bootstrap_architecture }}.deb
